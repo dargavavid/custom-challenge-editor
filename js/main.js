@@ -16,3 +16,7 @@ function handleDeleteField() {
     $(this).parent().remove();
 }
 
+function setEventHandlers() {
+    $document.on("click", ".add-field-button", handleAddField);
+    $document.on("click", ".delete-field-button", handleDeleteField);
+}
