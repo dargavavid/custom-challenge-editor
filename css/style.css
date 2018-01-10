@@ -28,6 +28,7 @@ html, body {
 
 .gif-section-field {
     display: flex;
+    padding: 10px;
 }
 
 .field-input {
