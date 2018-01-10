@@ -11,3 +11,8 @@ function handleAddField() {
     var $gifField = jQuery(gifFieldStr);
     $(this).parent().append($gifField);
 }
+
+function handleDeleteField() {
+    $(this).parent().remove();
+}
+
