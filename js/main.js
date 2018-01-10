@@ -1,4 +1,6 @@
 var $document = jQuery(document);
+var $app = jQuery(".app");
+var $addSectionButton = jQuery(".add-section-button");
 
 var gifSectionStr = `<div class="gif-section">
         <div class="gif-section-headers">
@@ -16,6 +18,11 @@ var gifFieldStr = `<div class="gif-section-field">
             <button class="delete-field-button">X Mező törlése</button>
         </div>`;
 
+function handleAddSection() {
+    var $gifSection = jQuery(gifSectionStr);
+    console.log($gifSection)
+    $app.append($gifSection);
+}
 
 function handleAddField() {
     var $gifField = jQuery(gifFieldStr);
@@ -27,8 +34,9 @@ function handleDeleteField() {
 }
 
 function setEventHandlers() {
-    $document.on("click", ".add-field-button", handleAddField);
-    $document.on("click", ".delete-field-button", handleDeleteField);
+    $addSectionButton.on("click", handleAddSection);
+    $app.on("click", ".add-field-button", handleAddField);
+    $app.on("click", ".delete-field-button", handleDeleteField);
 }
 
 setEventHandlers();

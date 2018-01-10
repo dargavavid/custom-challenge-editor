@@ -11,8 +11,8 @@ html, body {
 
 .gif-section {
     width: 50%;
-    height: 500px;
     margin: auto;
+    margin-bottom: 25px;
     background-color: red;
 }
 
