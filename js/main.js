@@ -24,6 +24,7 @@ function handleAddSection() {
     $app.append($gifSection);
 }
 
+
 function handleAddField() {
     var $gifField = jQuery(gifFieldStr);
     $(this).parent().append($gifField);

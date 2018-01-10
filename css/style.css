@@ -16,6 +16,11 @@ html, body {
     background-color: red;
 }
 
+.delete-section-button {
+    float: right;
+    clear: both;
+}
+
 .gif-section-headers {
     display: flex;
     flex-wrap: wrap;
