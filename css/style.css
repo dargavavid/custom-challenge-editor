@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.gif-section {
+    width: 50%;
+    height: 500px;
+    margin: auto;
+    background-color: red;
+}
+
+.gif-section-headers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gif-section-header {
+    width: 100%;
+    margin: 10px;
+}
+
+.gif-section-field {
+    display: flex;
+}
+
+.field-input {
+    width: 30%;
+}
+
+.delete-section-field {
+    width: 10%;
+}
