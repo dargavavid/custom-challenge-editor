@@ -44,4 +44,5 @@ function setEventHandlers() {
     $app.on("click", ".delete-section-button", handleDeleteSection);
 }
 
+
 setEventHandlers();

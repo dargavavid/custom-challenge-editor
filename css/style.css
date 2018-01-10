@@ -17,7 +17,12 @@ html, body {
 
 .video-section {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
+}
+
+.videotitle {
+    width: 50%;
 }
 
 .videosrc {
