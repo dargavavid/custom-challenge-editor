@@ -7,7 +7,7 @@ var gifFieldStr = `<div class="gif-section-field">
             <button class="delete-field-button">X Mező törlése</button>
         </div>`;
 
-// $addFieldButton.on("click", function() {
-//     var $gifField = jQuery(gifFieldStr);
-//     $(this).parent().append($gifField);
-// });
+function handleAddField() {
+    var $gifField = jQuery(gifFieldStr);
+    $(this).parent().append($gifField);
+}
