@@ -9,8 +9,22 @@ html, body {
     padding: 0;
 }
 
-.gif-section {
+.app {
     width: 50%;
+    margin: auto;
+}
+
+.video-section {
+    display: flex;
+    width: 100%;
+}
+
+.videosrc {
+    width: 50%;
+}
+
+.gif-section {
+    width: 100%;
     margin: auto;
     margin-bottom: 25px;
     background-color: red;

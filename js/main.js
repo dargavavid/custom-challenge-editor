@@ -21,7 +21,6 @@ var gifFieldStr = `<div class="gif-section-field">
 
 function handleAddSection() {
     var $gifSection = jQuery(gifSectionStr);
-    console.log($gifSection)
     $app.append($gifSection);
 }
 
