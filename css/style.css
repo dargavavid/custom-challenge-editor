@@ -12,6 +12,7 @@ html, body {
 .app {
     width: 50%;
     margin: auto;
+    text-align: center;
 }
 
 .video-section {
@@ -54,6 +55,6 @@ html, body {
     width: 30%;
 }
 
-.delete-section-field {
+.delete-field-button {
     width: 10%;
 }
