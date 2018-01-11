@@ -76,11 +76,13 @@ function getInputs() {
         }
         gifBlocks.push(gifBlock);
     }
-    return {
+    var content = {
         number: parseInt(jQuery(".daynum").val()),
         videos: videos,
         gifBlocks: gifBlocks
-    }
+    };
+    dayContent = content;
+    return content;
 }
 
 function resetEditor() {
