@@ -165,27 +165,36 @@ function insertDayContentIntoDB(dayContent) {
             type: 'POST',
             dataType: 'json',
             data: {daynum: dayContent.number, content: JSON.stringify(dayContent)},
-            success: function (response) {
-                console.log(response);
-                //TODO: load in content
-                // insertDayContent(dayContent);
+            // done: function (response) {
+            //     console.log(response);
+            //     //TODO: load in content
+            //     // insertDayContent(dayContent);
+            // }
+        }).always(function (response) {
+            if (response.responseText === "SUCCESS") {
+                notifyUser("OK: Új nap beillesztve az adatbázisba.");
+            }else {
+                notifyUser("HIBA: Ez a nap már létezik, próbáld betölteni.")
             }
+            //TODO: load in content
+            // insertDayContent(dayContent);
         });
 }
 
 function modifyDayContentInDB(daynum) {
+    console.log("modf")
     jQuery.ajax(
         {
             url: "https://www.szaszhegyessyzita.com/wp-content/plugins/varga-solutions/new-90-days-challenge/update_db.php",
             type: 'POST',
             dataType: 'json',
             data: { daynum: dayContent.number, content: JSON.stringify(dayContent) },
-            success: function (response) {
-                console.log(response);
-                //TODO: load in content
-                // insertDayContent(dayContent);
-            }
-        });    
+            
+        }).always( function (response) {
+            console.log(response);
+            //TODO: load in content
+            // insertDayContent(dayContent);
+        });
 }
 
 function resetModeButtons() {
@@ -209,6 +218,10 @@ function handleModeToggle() {
 function handleDayContentLoad() {
     var daynum = parseInt(jQuery(".daynum").val());
     getDayContent(daynum);
+}
+
+function notifyUser(msg) {
+    window.alert(msg);
 }
 
 setEventHandlers();
