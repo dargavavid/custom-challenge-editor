@@ -54,7 +54,12 @@ html, body {
 
 .gif-section-field {
     display: flex;
-    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.gif-section-field h3 {
+    width: 100%;
+    margin: 0;
 }
 
 .field-input {

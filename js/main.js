@@ -5,8 +5,10 @@ var $addSectionButton = jQuery(".add-section-button");
 var $insertContentButton = jQuery(".insert-content-button");
 var $loadDayButton = jQuery(".load-day-button");
 var dayContent;
+var currentMode = "create";
 
 var gifSectionStr = `<div class="gif-section">
+            <h2>Gif szekció</h2>
             <button class="delete-section-button">X</button>
             <div class="gif-section-headers">
                     <input type="text" class="gif-section-header" placeholder="h1...">
@@ -17,6 +19,7 @@ var gifSectionStr = `<div class="gif-section">
         </div>`;
 
 var gifFieldStr = `<div class="gif-section-field">
+            <h3>Gif mező</h3>
             <input type="text" class="field-imgsrc field-input" placeholder="Kép src...">
             <input type="text" class="field-gifsrc field-input" placeholder="Gif src (hagyd üresen, ha álló)...">
             <input type="text" class="field-descr field-input" placeholder="Leírás...">
@@ -44,7 +47,12 @@ function handleDeleteField() {
 function handleInsertContentIntoDB() {
     getInputs();
     //run some checks as well
-    insertDayContentIntoDB(dayContent);
+    if (currentMode === "create") {
+        insertDayContentIntoDB(dayContent);
+    }else if (currentMode === "modify") {
+        var daynum = parseInt(jQuery(".daynum").val());
+        modifyDayContentInDB(daynum);
+    }
 }
 
 function setEventHandlers() {
@@ -165,18 +173,36 @@ function insertDayContentIntoDB(dayContent) {
         });
 }
 
+function modifyDayContentInDB(daynum) {
+    jQuery.ajax(
+        {
+            url: "https://www.szaszhegyessyzita.com/wp-content/plugins/varga-solutions/new-90-days-challenge/update_db.php",
+            type: 'POST',
+            dataType: 'json',
+            data: { daynum: dayContent.number, content: JSON.stringify(dayContent) },
+            success: function (response) {
+                console.log(response);
+                //TODO: load in content
+                // insertDayContent(dayContent);
+            }
+        });    
+}
+
 function resetModeButtons() {
     $modeButtons.removeClass("active-mode");
 }
 
 function handleModeToggle() {
+    resetEditor();
     resetModeButtons();
     var $target = jQuery(this);
     $target.addClass("active-mode");
     if ($target.attr("class").includes("modify")) {
         $loadDayButton.show();
+        currentMode = "modify";
     }else {
         $loadDayButton.hide();
+        currentMode = "create";
     }
 }
 
