@@ -89,6 +89,22 @@ function resetEditor() {
     jQuery(".gif-section").remove();
 }
 
+function getDayContent(dayNum) {
+    jQuery.ajax(
+        {
+            url: "https://www.szaszhegyessyzita.com/wp-content/plugins/varga-solutions/new-90-days-challenge/get_day_content.php",
+            type: 'POST',
+            dataType: 'json',
+            data: { daynum: dayNum },
+            success: function (response) {
+                dayContent = JSON.parse(response.slice(1, response.length - 1));
+                console.log(dayContent);
+                //TODO: load in content
+                insertDayContent(dayContent);
+            }
+        });
+}
+
 function loadDayContent(dayContent) {
     jQuery(".daynum").val(dayContent.number);
 
