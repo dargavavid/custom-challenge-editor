@@ -1,6 +1,7 @@
 var $document = jQuery(document);
 var $app = jQuery(".app");
 var $addSectionButton = jQuery(".add-section-button");
+var dayContent;
 
 var gifSectionStr = `<div class="gif-section">
             <button class="delete-section-button">X</button>
@@ -100,7 +101,7 @@ function getDayContent(dayNum) {
                 dayContent = JSON.parse(response.slice(1, response.length - 1));
                 console.log(dayContent);
                 //TODO: load in content
-                insertDayContent(dayContent);
+                // insertDayContent(dayContent);
             }
         });
 }
@@ -131,6 +132,21 @@ function loadDayContent(dayContent) {
         }
         $app.append($gifSection);
     }
+}
+
+function insertDayContentIntoDB(dayContent) {
+    jQuery.ajax(
+        {
+            url: "https://www.szaszhegyessyzita.com/wp-content/plugins/varga-solutions/new-90-days-challenge/write_db.php",
+            type: 'POST',
+            dataType: 'json',
+            data: {daynum: dayContent.number, content: JSON.stringify(dayContent)},
+            success: function (response) {
+                console.log(response);
+                //TODO: load in content
+                // insertDayContent(dayContent);
+            }
+        });
 }
 
 setEventHandlers();
