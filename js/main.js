@@ -54,6 +54,7 @@ function setEventHandlers() {
     $app.on("click", ".delete-section-button", handleDeleteSection);
     $insertContentButton.on("click", handleInsertContentIntoDB);
     $modeButtons.on("click", handleModeToggle);
+    $loadDayButton.on("click", handleDayContentLoad);
 }
 
 function getInputs() {
@@ -115,6 +116,8 @@ function getDayContent(dayNum) {
                 // dayContent = JSON.parse(response.slice(1, response.length - 1));
                 //TODO: load in content
                 // insertDayContent(dayContent);
+                resetEditor();
+                loadDayContent(dayContent);
             }
         });
 }
@@ -175,6 +178,11 @@ function handleModeToggle() {
     }else {
         $loadDayButton.hide();
     }
+}
+
+function handleDayContentLoad() {
+    var daynum = parseInt(jQuery(".daynum").val());
+    getDayContent(daynum);
 }
 
 setEventHandlers();
