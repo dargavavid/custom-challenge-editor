@@ -67,7 +67,6 @@ function getInputs() {
         
         gifBlock.gifs = [];
         
-        
         for (var j = 0; j < $gifFields.length; j++) {
             $gifField = $gifFields.eq(j);
             gifField = {imgsrc: $gifField.find(".field-imgsrc").val(), gifsrc: $gifField.find(".field-gifsrc").val(), description: $gifField.find(".field-descr").val()};
@@ -77,7 +76,7 @@ function getInputs() {
         gifBlocks.push(gifBlock);
     }
     return {
-        day: "dosomethingaboutme",
+        number: parseInt(jQuery(".daynum").val()),
         videos: videos,
         gifBlocks: gifBlocks
     }
