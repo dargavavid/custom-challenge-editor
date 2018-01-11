@@ -83,6 +83,9 @@ function getInputs() {
 }
 
 function resetEditor() {
+    jQuery(".daynum").val("");
+    jQuery(".videotitle").val("");
+    jQuery(".videosrc").val("");
     jQuery(".gif-section").remove();
 }
 
