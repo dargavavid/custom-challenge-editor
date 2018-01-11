@@ -26,16 +26,16 @@ function handleAddSection() {
 }
 
 function handleDeleteSection() {
-    $(this).parent().remove();
+    jQuery(this).parent().remove();
 }
 
 function handleAddField() {
     var $gifField = jQuery(gifFieldStr);
-    $(this).parent().append($gifField);
+    jQuery(this).parent().append($gifField);
 }
 
 function handleDeleteField() {
-    $(this).parent().remove();
+    jQuery(this).parent().remove();
 }
 
 function setEventHandlers() {
