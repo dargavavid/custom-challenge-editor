@@ -14,7 +14,7 @@ var gifSectionStr = `<div class="gif-section">
 
 var gifFieldStr = `<div class="gif-section-field">
             <input type="text" class="field-imgsrc field-input" placeholder="Kép src...">
-            <input type="text" class="field-gifsrc field-input" placeholder="Gif src...">
+            <input type="text" class="field-gifsrc field-input" placeholder="Gif src (hagyd üresen, ha álló)...">
             <input type="text" class="field-descr field-input" placeholder="Leírás...">
             <button class="delete-field-button">X</button>
         </div>`;
@@ -44,5 +44,43 @@ function setEventHandlers() {
     $app.on("click", ".delete-section-button", handleDeleteSection);
 }
 
+function getInputs() {
+    var $videoSection = jQuery(".video-section");
+    var $videoTitles = jQuery(".videotitle");
+    var $videoSrcs = jQuery(".videosrc");
+    var videos = [
+        { url: $videoSrcs.eq(0).val(), title: $videoTitles.eq(0).val() },
+        { url: $videoSrcs.eq(1).val(), title: $videoTitles.eq(1).val() },
+    ];
+    var gifBlocks = [];
+    
+    var $gifSections = jQuery(".gif-section");
+    var $gifSection, $blockHeaders, $gifFields, $gifField, gifs, gifField, gifBlock;
+    for (var i = 0; i < $gifSections.length; i++) {
+        $gifSection = $gifSections.eq(i);
+        $blockHeaders = $gifSection.find(".gif-section-header");
+        $gifFields = $gifSection.find(".gif-section-field");
+        gifBlock = {};
+        gifBlock.h1 = $blockHeaders.eq(0).val();
+        gifBlock.h3 = $blockHeaders.eq(1).val();
+        gifBlock.h5 = $blockHeaders.eq(2).val();
+        
+        gifBlock.gifs = [];
+        
+        
+        for (var j = 0; j < $gifFields.length; j++) {
+            $gifField = $gifFields.eq(j);
+            gifField = {imgsrc: $gifField.find(".field-imgsrc").val(), gifsrc: $gifField.find(".field-gifsrc").val(), description: $gifField.find(".field-descr").val()};
+            
+            gifBlock.gifs.push(gifField);
+        }
+        gifBlocks.push(gifBlock);
+    }
+    return {
+        day: "dosomethingaboutme",
+        videos: videos,
+        gifBlocks: gifBlocks
+    }
+}
 
 setEventHandlers();
