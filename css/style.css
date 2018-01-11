@@ -68,3 +68,7 @@ html, body {
 .active-mode {
     background-color: lime;
 }
+
+.hidden {
+    display: none;
+}

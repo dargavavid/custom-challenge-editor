@@ -1,7 +1,9 @@
 var $document = jQuery(document);
 var $app = jQuery(".app");
+var $modeButtons = jQuery(".mode-button");
 var $addSectionButton = jQuery(".add-section-button");
 var $insertContentButton = jQuery(".insert-content-button");
+var $loadDayButton = jQuery(".load-day-button");
 var dayContent;
 
 var gifSectionStr = `<div class="gif-section">
@@ -51,6 +53,7 @@ function setEventHandlers() {
     $app.on("click", ".delete-field-button", handleDeleteField);
     $app.on("click", ".delete-section-button", handleDeleteSection);
     $insertContentButton.on("click", handleInsertContentIntoDB);
+    $modeButtons.on("click", handleModeToggle);
 }
 
 function getInputs() {
@@ -157,6 +160,21 @@ function insertDayContentIntoDB(dayContent) {
                 // insertDayContent(dayContent);
             }
         });
+}
+
+function resetModeButtons() {
+    $modeButtons.removeClass("active-mode");
+}
+
+function handleModeToggle() {
+    resetModeButtons();
+    var $target = jQuery(this);
+    $target.addClass("active-mode");
+    if ($target.attr("class").includes("modify")) {
+        $loadDayButton.show();
+    }else {
+        $loadDayButton.hide();
+    }
 }
 
 setEventHandlers();
