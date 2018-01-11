@@ -82,4 +82,8 @@ function getInputs() {
     }
 }
 
+function resetEditor() {
+    jQuery(".gif-section").remove();
+}
+
 setEventHandlers();
