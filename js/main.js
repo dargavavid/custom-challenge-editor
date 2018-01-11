@@ -1,6 +1,7 @@
 var $document = jQuery(document);
 var $app = jQuery(".app");
 var $addSectionButton = jQuery(".add-section-button");
+var $insertContentButton = jQuery(".insert-content-button");
 var dayContent;
 
 var gifSectionStr = `<div class="gif-section">
@@ -38,11 +39,18 @@ function handleDeleteField() {
     jQuery(this).parent().remove();
 }
 
+function handleInsertContentIntoDB() {
+    getInputs();
+    //run some checks as well
+    insertDayContentIntoDB(dayContent);
+}
+
 function setEventHandlers() {
     $addSectionButton.on("click", handleAddSection);
     $app.on("click", ".add-field-button", handleAddField);
     $app.on("click", ".delete-field-button", handleDeleteField);
     $app.on("click", ".delete-section-button", handleDeleteSection);
+    $insertContentButton.on("click", handleInsertContentIntoDB);
 }
 
 function getInputs() {
@@ -100,8 +108,8 @@ function getDayContent(dayNum) {
             dataType: 'json',
             data: { daynum: dayNum },
             success: function (response) {
-                dayContent = JSON.parse(response.slice(1, response.length - 1));
-                console.log(dayContent);
+                dayContent = JSON.parse(response);
+                // dayContent = JSON.parse(response.slice(1, response.length - 1));
                 //TODO: load in content
                 // insertDayContent(dayContent);
             }
