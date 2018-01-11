@@ -89,4 +89,32 @@ function resetEditor() {
     jQuery(".gif-section").remove();
 }
 
+function loadDayContent(dayContent) {
+    jQuery(".daynum").val(dayContent.number);
+
+    var $videoTitles = jQuery(".videotitle");
+    var $videoSrcs = jQuery(".videosrc");
+    $videoTitles.eq(0).val(dayContent.videos[0].title);
+    $videoTitles.eq(1).val(dayContent.videos[1].title);
+    $videoSrcs.eq(0).val(dayContent.videos[0].url);
+    $videoSrcs.eq(1).val(dayContent.videos[1].url);
+    
+    var $gifSection, $blockHeaders, $gifField;
+    for (var i = 0; i < dayContent.gifBlocks.length; i++) {
+        $gifSection = jQuery(gifSectionStr);
+        $blockHeaders = $gifSection.find(".gif-section-header");
+        $blockHeaders.eq(0).val(dayContent.gifBlocks[i].h1);
+        $blockHeaders.eq(1).val(dayContent.gifBlocks[i].h3);
+        $blockHeaders.eq(2).val(dayContent.gifBlocks[i].h5);
+        for (var j = 0; j < dayContent.gifBlocks[i].gifs.length; j++) {
+            $gifField = jQuery(gifFieldStr);
+            $gifField.find(".field-imgsrc").val(dayContent.gifBlocks[i].gifs[j].imgsrc);
+            $gifField.find(".field-gifsrc").val(dayContent.gifBlocks[i].gifs[j].gifsrc);
+            $gifField.find(".field-descr").val(dayContent.gifBlocks[i].gifs[j].description);
+            $gifSection.append($gifField);
+        }
+        $app.append($gifSection);
+    }
+}
+
 setEventHandlers();
