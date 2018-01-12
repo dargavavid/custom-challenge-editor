@@ -172,9 +172,9 @@ function insertDayContentIntoDB(dayContent) {
             // }
         }).always(function (response) {
             if (response.responseText === "SUCCESS") {
-                notifyUser("OK: Új nap beillesztve az adatbázisba.");
+                notifyUser("OK: Új nap beillesztve az adatbázisba!");
             }else {
-                notifyUser("HIBA: Ez a nap már létezik, próbáld betölteni.")
+                notifyUser("HIBA: Ez a nap már létezik, próbáld betölteni!")
             }
             //TODO: load in content
             // insertDayContent(dayContent);
@@ -182,7 +182,6 @@ function insertDayContentIntoDB(dayContent) {
 }
 
 function modifyDayContentInDB(daynum) {
-    console.log("modf")
     jQuery.ajax(
         {
             url: "https://www.szaszhegyessyzita.com/wp-content/plugins/varga-solutions/new-90-days-challenge/update_db.php",
@@ -191,7 +190,7 @@ function modifyDayContentInDB(daynum) {
             data: { daynum: dayContent.number, content: JSON.stringify(dayContent) },
             
         }).always( function (response) {
-            console.log(response);
+            notifyUser("OK: Nap módosítva!")
             //TODO: load in content
             // insertDayContent(dayContent);
         });
